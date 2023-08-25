@@ -40,7 +40,16 @@ const Nav = () => {
             </Link>
           </div>
         ) : (
-          <></>
+          <>
+            <div className="flex gap-3 md:gap-5">
+              <button type="button" onClick={signIn} className="green_btn">
+                Sign In
+              </button>
+              <button type="button" onClick={signIn} className="outline_btn">
+                Sign Up
+              </button>
+            </div>
+          </>
         )}
       </div>
     </nav>
