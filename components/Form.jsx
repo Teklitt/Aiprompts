@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 
 const form = ({ type, post, setPost, submitting, handleSubmit }) => {
