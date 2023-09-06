@@ -9,7 +9,7 @@ import Form from '@components/Form'
 const CreatePrompt = () => {
   const Router = useRouter()
   const { data: session } = useSession()
-
+  console.log('Session:', session)
   const [submitting, setSubmitting] = useState(false)
 
   const [post, setPost] = useState({
@@ -22,6 +22,10 @@ const CreatePrompt = () => {
     setSubmitting(true)
 
     try {
+      if (!session || !session.user || !session.user.id) {
+        console.error('Session or userId is undefined')
+        return
+      }
       const response = await fetch('/api/prompt/new', {
         method: 'POST',
         body: JSON.stringify({
