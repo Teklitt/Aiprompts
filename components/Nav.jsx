@@ -1,15 +1,22 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 import { useState, useEffect } from 'react'
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 const Nav = () => {
   const { data: session } = useSession()
-
+  const router = useRouter()
   const [providers, setProviders] = useState(null)
   const [toggleDropdown, settoggleDropDown] = useState(false)
+
+  const handleSignOut = async () => {
+    router.push('/')
+    await signOut()
+    // Redirect to the home page
+  }
 
   useEffect(() => {
     const setUpProviders = async () => {
@@ -113,6 +120,7 @@ const Nav = () => {
                   onClick={() => {
                     settoggleDropDown(false)
                     signOut()
+                    router.push('/')
                   }}
                   className="mt-5 w-full black_btn"
                 >
