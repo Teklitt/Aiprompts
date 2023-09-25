@@ -9,8 +9,9 @@ import Profile from '@components/Profile'
 const MyProfile = () => {
   const router = useRouter()
   const { data: session } = useSession()
-
+  //console.log('Session:', session)
   const [posts, setPosts] = useState([])
+  console.log('session?.user.id', session?.user.id)
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -20,6 +21,7 @@ const MyProfile = () => {
       setPosts(data)
     }
     //console.log(posts)
+
     if (session?.user.id) fetchPosts()
   }, [session?.user.id])
 
