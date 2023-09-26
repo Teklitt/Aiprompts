@@ -2,6 +2,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { motion } from 'framer-motion'
+import useThemeSwitcher from '../components/hooks/useThemeSwitcher'
+import { MoonIcon, SunIcon } from './icon'
 
 import { useState, useEffect } from 'react'
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
@@ -11,6 +14,7 @@ const Nav = () => {
   const router = useRouter()
   const [providers, setProviders] = useState(null)
   const [toggleDropdown, settoggleDropDown] = useState(false)
+  const [mode, setMode] = useThemeSwitcher()
 
   const handleSignOut = async () => {
     router.push('/')
@@ -49,7 +53,7 @@ const Nav = () => {
             <button type="button" onClick={signOut} className="outline_btn">
               Sign Out
             </button>
-            <Link href="/Profile">
+            {/* <Link href="/Profile">
               <Image
                 src={session?.user.image}
                 width={37}
@@ -57,7 +61,33 @@ const Nav = () => {
                 className="rounded-full"
                 alt="profile image"
               />
-            </Link>
+            </Link> */}
+
+            <motion.a
+              href="/Profile"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Image
+                src={session?.user.image}
+                width={37}
+                height={37}
+                className="rounded-full"
+                alt="profile image"
+              />
+            </motion.a>
+            <button
+              onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+              className={`ml-2 flex items-center justify-center rounded-full p-2
+          ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
+          `}
+            >
+              {mode === 'dark' ? (
+                <SunIcon className={'fill-dark'} />
+              ) : (
+                <MoonIcon className={'fill-dark'} />
+              )}
+            </button>
           </div>
         ) : (
           <>
@@ -72,15 +102,18 @@ const Nav = () => {
                   Sign In
                 </button>
               ))}
-
-            {/* <div className="flex gap-3 md:gap-5">
-              <button type="button" onClick={signIn} className="green_btn">
-                Sign In
-              </button>
-              <button type="button" onClick={signIn} className="outline_btn">
-                Sign Up
-              </button>
-            </div> */}
+            <button
+              onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+              className={`ml-3 flex items-center justify-center rounded-full p-1
+          ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
+          `}
+            >
+              {mode === 'dark' ? (
+                <SunIcon className={'fill-dark'} />
+              ) : (
+                <MoonIcon className={'fill-dark'} />
+              )}
+            </button>
           </>
         )}
       </div>
@@ -90,14 +123,16 @@ const Nav = () => {
       <div className="sm:hidden flex relative ">
         {session?.user ? (
           <div className="flex">
-            <Image
-              src={session?.user.image}
-              width={37}
-              height={37}
-              className="rounded-full"
-              alt="profile image"
-              onClick={() => settoggleDropDown((prev) => !prev)}
-            />
+            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }}>
+              <Image
+                src={session?.user.image}
+                width={37}
+                height={37}
+                className="rounded-full"
+                alt="profile image"
+                onClick={() => settoggleDropDown((prev) => !prev)}
+              />
+            </motion.div>
 
             {toggleDropdown && (
               <div className="dropdown">
@@ -115,6 +150,18 @@ const Nav = () => {
                 >
                   Create Prompt
                 </a>
+                <button
+                  onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+                  className={`ml-3 flex items-center justify-center rounded-full p-2
+          ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
+          `}
+                >
+                  {mode === 'dark' ? (
+                    <SunIcon className={'fill-dark'} />
+                  ) : (
+                    <MoonIcon className={'fill-dark'} />
+                  )}
+                </button>
                 <button
                   type="button"
                   onClick={() => {

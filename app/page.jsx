@@ -1,33 +1,25 @@
 'use client'
 import Feed from '@components/Feed'
-import { motion, AnimatePresence } from 'framer-motion'
+
+import AnimatedText from '@components/AnimatedText'
 
 const Home = () => {
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        // initial={{ scaleY: 0 }}
-        // animate={{ scaleY: 1 }}
-        // exit={{ scaleY: 1 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        //transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <section className="w-full flex-center flex-col">
-          <h1 className="head_text text-center">
-            Share Working
-            <br className="max-md:first-line:hidden" />
-            <span className="blue_gradient text-center">AI-Prompts</span>
-            <p className="desc text-center">
-              AI prompts is a platform for individuals to create, share and
-              discover creative prompts
-            </p>
-          </h1>
-          <Feed />
-        </section>
-      </motion.div>
-    </AnimatePresence>
+    <div>
+      <section className="w-full flex-center flex-col">
+        <h1 className="head_text text-center">
+          Share Working
+          <br className="max-md:first-line:hidden" />
+          <span className="blue_gradient text-center text-8xl">AI-Prompts</span>
+          <AnimatedText
+            text=" AI prompts is a platform for individuals to create, share and
+            discover creative prompts"
+            className=" desc text-center"
+          />
+        </h1>
+        <Feed />
+      </section>
+    </div>
   )
 }
 export default Home

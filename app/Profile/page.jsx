@@ -11,7 +11,8 @@ const MyProfile = () => {
   const { data: session } = useSession()
   //console.log('Session:', session)
   const [posts, setPosts] = useState([])
-  console.log('session?.user.id', session?.user.id)
+
+  //console.log('session?.user.id', session?.user.id)
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -41,16 +42,14 @@ const MyProfile = () => {
         console.log(error)
       }
   }
-
   return (
     <Profile
       name="My"
-      desc="Welcome to your Personalized profile page"
+      desc="Welcome to your personalized page."
       data={posts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     />
   )
 }
-
 export default MyProfile
