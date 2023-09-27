@@ -33,13 +33,13 @@ const form = ({ type, post, setPost, submitting, handleSubmit }) => {
             Tag
             <span className="font-normal text-sm">
               {' '}
-              ( #resumeformat, #product, #keywords )
+              ( resumeformat, product, keywords )
             </span>
           </span>
           <input
             value={post.tag}
             onChange={(e) => setPost({ ...post, tag: e.target.value })}
-            placeholder="add #tags"
+            placeholder="add tag"
             required
             className="form_input"
           />
