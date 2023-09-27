@@ -152,14 +152,14 @@ const Nav = () => {
                 </a>
                 <button
                   onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-                  className={`ml-3 flex items-center justify-center rounded-full p-2
+                  className={`flex items-center justify-center rounded-full p-2
           ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
           `}
                 >
                   {mode === 'dark' ? (
-                    <SunIcon className={'fill-dark'} />
+                    <SunIcon className={'fill-dark w-1/2'} />
                   ) : (
-                    <MoonIcon className={'fill-dark'} />
+                    <MoonIcon className={'fill-dark w-1/2'} />
                   )}
                 </button>
                 <button
@@ -169,7 +169,7 @@ const Nav = () => {
                     signOut()
                     router.push('/')
                   }}
-                  className="mt-5 w-full black_btn"
+                  className="mt-5 w-full black_btn "
                 >
                   Sign Out
                 </button>

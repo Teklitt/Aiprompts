@@ -10,7 +10,7 @@ const Home = () => {
         <h1 className="head_text text-center">
           Share Working
           <br className="max-md:first-line:hidden" />
-          <span className="blue_gradient text-center text-8xl">AI-Prompts</span>
+          <span className="blue_gradient text-center text-7xl">AI-Prompts</span>
           <AnimatedText
             text=" AI prompts is a platform for individuals to create, share and
             discover creative prompts"
