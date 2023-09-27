@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import useThemeSwitcher from '../components/hooks/useThemeSwitcher'
-import { MoonIcon, SunIcon } from './icon'
+import { MoonIcon, SunIcon } from './Icon'
 
 import { useState, useEffect } from 'react'
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
