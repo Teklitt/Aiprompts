@@ -36,7 +36,7 @@ const MyProfile = () => {
       try {
         await fetch(`/api/prompt/${post._id.toString()}`, { method: 'DELETE' })
         const filteredPosts = posts.filter((p) => p._id !== post._id)
-        window.location.reload()
+        //window.location.reload()
         //window.location.href = '/'
       } catch (error) {
         console.log(error)

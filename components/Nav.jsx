@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import useThemeSwitcher from '../components/hooks/useThemeSwitcher'
+
 import { MoonIcon, SunIcon } from './Icon'
 
 import { useState, useEffect } from 'react'
@@ -14,7 +14,6 @@ const Nav = () => {
   const router = useRouter()
   const [providers, setProviders] = useState(null)
   const [toggleDropdown, settoggleDropDown] = useState(false)
-  const [mode, setMode] = useThemeSwitcher()
 
   const handleSignOut = async () => {
     router.push('/')
@@ -76,18 +75,6 @@ const Nav = () => {
                 alt="profile image"
               />
             </motion.a>
-            <button
-              onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-              className={`ml-2 flex items-center justify-center rounded-full p-2
-          ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
-          `}
-            >
-              {mode === 'dark' ? (
-                <SunIcon className={'fill-dark'} />
-              ) : (
-                <MoonIcon className={'fill-dark'} />
-              )}
-            </button>
           </div>
         ) : (
           <>
@@ -102,18 +89,6 @@ const Nav = () => {
                   Sign In
                 </button>
               ))}
-            <button
-              onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-              className={`ml-3 flex items-center justify-center rounded-full p-1
-          ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
-          `}
-            >
-              {mode === 'dark' ? (
-                <SunIcon className={'fill-dark'} />
-              ) : (
-                <MoonIcon className={'fill-dark'} />
-              )}
-            </button>
           </>
         )}
       </div>
@@ -150,7 +125,7 @@ const Nav = () => {
                 >
                   Create Prompt
                 </a>
-                <button
+                {/* <button
                   onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
                   className={`flex items-center justify-center rounded-full p-2
           ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
@@ -161,7 +136,7 @@ const Nav = () => {
                   ) : (
                     <MoonIcon className={'fill-dark w-1/2'} />
                   )}
-                </button>
+                </button> */}
                 <button
                   type="button"
                   onClick={() => {
